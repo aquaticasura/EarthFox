@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     public LayerMask groundLayer;
+    public Vector2 groundCheckSize = new Vector2(1f, 1f);
+    public float groundCheckDistance = 0.1f;
+    public Color groundCheckGizmoColor = Color.green;
 
     void Awake()
     {
@@ -66,11 +69,30 @@ public class PlayerMovement : MonoBehaviour
         
     }
     public void OnJump(InputAction.CallbackContext context){
+        Debug.Log("Jump");
         if(context.performed && Grounded()){
+            Debug.Log("Grounded Jump");
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
     public bool Grounded(){
-        return Physics2D.BoxCast(transform.position, new Vector2(0.4f,0.4f), 0f, Vector2.down, 0.01f, groundLayer);
+        return Physics2D.BoxCast(transform.position, groundCheckSize, 0f, Vector2.down, groundCheckDistance, groundLayer);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = groundCheckGizmoColor;
+
+        Vector3 startCenter = transform.position;
+        Vector3 endCenter = startCenter + Vector3.down * groundCheckDistance;
+        Vector3 half = new Vector3(groundCheckSize.x * 0.5f, groundCheckSize.y * 0.5f, 0f);
+
+        Gizmos.DrawWireCube(startCenter, groundCheckSize);
+        Gizmos.DrawWireCube(endCenter, groundCheckSize);
+
+        Gizmos.DrawLine(startCenter + new Vector3(-half.x, half.y, 0f), endCenter + new Vector3(-half.x, half.y, 0f));
+        Gizmos.DrawLine(startCenter + new Vector3(half.x, half.y, 0f), endCenter + new Vector3(half.x, half.y, 0f));
+        Gizmos.DrawLine(startCenter + new Vector3(-half.x, -half.y, 0f), endCenter + new Vector3(-half.x, -half.y, 0f));
+        Gizmos.DrawLine(startCenter + new Vector3(half.x, -half.y, 0f), endCenter + new Vector3(half.x, -half.y, 0f));
     }
 }
