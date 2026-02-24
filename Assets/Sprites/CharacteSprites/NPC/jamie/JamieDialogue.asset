@@ -9,19 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c04645f2b2bde86469ed13dbc53d0565, type: 3}
+  m_Script: {fileID: 11500000, guid: d75ddd608bd25394485c644ea05b026b, type: 3}
   m_Name: JamieDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Jamie
   npcPortrait: {fileID: -3972179749553808558, guid: 431e3c7241f052d4f97248d7dd7a728a, type: 3}
   dialogueLines:
-  - Howdy
-  - Im Jamie and you are?
-  - Nice to meet you Fungy.
-  - See you around
-  - Rude.
-  autoProgressLines: 000000000000
-  endDialogueLines: 000000010100
+  - hello
+  - how are you
+  - thats good
+  - thats bad
+  autoProgressLines: 0101
+  endDialogueLines: 
   AutoProgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 0}
@@ -29,6 +28,6 @@ MonoBehaviour:
   choices:
   - dialogueIndex: 1
     choices:
-    - Fungy
-    - None of your business.
-    nextDialogueIndexes: 0200000004000000
+    - good
+    - bad
+    nextDialogueIndexes: 0200000003000000

@@ -37,7 +37,7 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
@@ -91,6 +91,15 @@
                     "name": "Menu",
                     "type": "Button",
                     "id": "11c60c94-21e9-4461-9399-415fa7d5e04d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact1",
+                    "type": "Button",
+                    "id": "fc5603db-310d-4ddb-a470-32310f2ff843",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -491,6 +500,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ef906ce-de9b-4bc9-9e76-891ae035e6ca",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
