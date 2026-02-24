@@ -856,7 +856,7 @@ MonoBehaviour:
   deceleration: 25
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!213 &113307657
 Sprite:
   m_ObjectHideFlags: 0
@@ -6114,7 +6114,7 @@ GameObject:
   - component: {fileID: 8809892019601933761}
   - component: {fileID: 7546561947281589512}
   - component: {fileID: 7049823906908192834}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
