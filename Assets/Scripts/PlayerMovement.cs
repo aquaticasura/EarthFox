@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+//Script brought to you by the fucking goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
 
     private Rigidbody2D rb;
     private PlayerInput playerInput;
-    private Vector2 moveInput;
+    public Vector2 moveInput;
     private bool isPressingMove;
     [Header("importante stuff")]
     public float moveSpeed = 5f;
@@ -70,6 +71,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     public bool Grounded(){
-        return Physics2D.BoxCast(transform.position, new Vector2(1,1), 0f, Vector2.down, 0.1f, groundLayer);
+        return Physics2D.BoxCast(transform.position, new Vector2(0.4f,0.4f), 0f, Vector2.down, 0.01f, groundLayer);
     }
 }
