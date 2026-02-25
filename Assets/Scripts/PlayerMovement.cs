@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 //Script brought to you by the fucking goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -7,11 +8,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerInput playerInput;
+    private SpriteRenderer spriteRenderer;
     public Vector2 moveInput;
     private bool isPressingMove;
+    private bool isRolling;
     [Header("importante stuff")]
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
+    public float rollForce = 10f;
     public const float maxSpeed = 5f;
     public float acceleration = 35f;
     public float deceleration = 25f;
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -50,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         }else{
             isPressingMove = false;
         }
+
+        FlipSprite();
     }
     void FixedUpdate(){
         float targetSpeed = moveInput.x * maxSpeed;
@@ -94,5 +101,33 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(startCenter + new Vector3(half.x, half.y, 0f), endCenter + new Vector3(half.x, half.y, 0f));
         Gizmos.DrawLine(startCenter + new Vector3(-half.x, -half.y, 0f), endCenter + new Vector3(-half.x, -half.y, 0f));
         Gizmos.DrawLine(startCenter + new Vector3(half.x, -half.y, 0f), endCenter + new Vector3(half.x, -half.y, 0f));
+    }
+    public void OnRoll(InputAction.CallbackContext context){
+        if(context.performed && !isRolling){
+            StartCoroutine(Roll());
+        }
+    }
+    private IEnumerator Roll(){
+        isRolling = true;
+        rb.AddForce(Vector2.right * moveInput.x * rollForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.5f);
+        isRolling = false;
+    }
+
+    private void FlipSprite()
+    {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
+
+        if (moveInput.x > 0.01f)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (moveInput.x < -0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }
