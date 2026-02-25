@@ -512,7 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveInput: {x: 0, y: 0}
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 6
   rollForce: 10
   acceleration: 35
   deceleration: 25
