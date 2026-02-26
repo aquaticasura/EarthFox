@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-//Script brought to you by the fucking goat
+//Script brought to you by the flipping goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public const float maxSpeed = 5f;
     public float acceleration = 35f;
     public float deceleration = 25f;
+    private int jumpCount = 0;
+    public int maxJumpCount = 2;
 
 
     public LayerMask groundLayer;
@@ -52,6 +54,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Grounded())
+        {
+            jumpCount = 0;
+        }
+        
         if(moveInput.x != 0){
             isPressingMove = true;
         }else{
@@ -78,10 +85,12 @@ public class PlayerMovement : MonoBehaviour
         
     }
     public void OnJump(InputAction.CallbackContext context){
-        Debug.Log("Jump");
-        if(context.performed && Grounded()){
-            Debug.Log("Grounded Jump");
+        if(context.performed){
+        if (Grounded() || jumpCount < maxJumpCount)
+        {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpCount++;
+            }
         }
     }
     public bool Grounded(){
