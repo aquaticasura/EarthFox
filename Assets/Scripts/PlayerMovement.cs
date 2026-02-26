@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer arm;
+    [SerializeField] GameObject armjoint;
     public Vector2 moveInput;
     private bool isPressingMove;
     private bool isRolling;
@@ -55,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }else{
             isPressingMove = false;
         }
-
+        //if (armjoint.transform.rotation)
         FlipSprite();
     }
     void FixedUpdate(){
@@ -124,10 +126,12 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.x > 0.01f)
         {
             spriteRenderer.flipX = false;
+            //arm.flipX = false;
         }
         else if (moveInput.x < -0.01f)
         {
             spriteRenderer.flipX = true;
+            //arm.flipX = true;
         }
     }
 }

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: Collision
     uniqueID: 3947823969
+    locked: 0
+  - name: PlayerArm
+    uniqueID: 960026871
     locked: 0
   - name: Player
     uniqueID: 140255161
