@@ -9,12 +9,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] Transform armjoint;
+    [SerializeField] SpriteRenderer armsprite;
     public Vector2 moveInput;
     private bool isPressingMove;
     private bool isRolling;
     private int facingdirection = 1;
-    private bool isFlipped;
     [SerializeField] ArmAndGunScript mouse;
 
     [Header("importante stuff")]
@@ -35,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        isFlipped = false;
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -68,15 +66,14 @@ public class PlayerMovement : MonoBehaviour
         }else{
             isPressingMove = false;
         }
-        Debug.Log(mouse.mousePos.x);
-        if (mouse.mousePos.x < 960 && facingdirection > 0 || mouse.mousePos.x > 960 && facingdirection < 0)
+        if (mouse.mousePos.x < 960 && facingdirection > 0)
         {
-            FlipSprite();
+            FlipSprite("left");
         }
-        /*if (moveInput.x > 0.01f && facingdirection < 0 || moveInput.x < -0.01f && facingdirection > 0)
+        else //(mouse.mousePos.x > 960 && facingdirection < 0)
         {
-            FlipSprite();
-        }*/
+            FlipSprite("right");
+        }
 
  
     }
@@ -138,24 +135,27 @@ public class PlayerMovement : MonoBehaviour
         isRolling = false;
     }
 
-    private void FlipSprite()
+    private void FlipSprite(string direction)
     {
-        facingdirection *= -1;
+        if (direction == "right")
+        {
+            Debug.Log("right");
+            armsprite.flipX = false;
+            armsprite.flipY = false;
+        }
+        else if (direction == "left")
+        {
+            Debug.Log("left");
+            //armsprite.flipX = true;
+            //armsprite.flipY = true;
+        }
+        /*facingdirection *= -1;
 
         Vector3 scale = transform.localScale;
         scale.x *= -1;
-        transform.localScale = scale;
+        transform.localScale = scale;*/
 
 
-        /*if (moveInput.x > 0.01f)
-        {
-            spriteRenderer.flipX = false;
-            //arm.flipX = false;
-        }
-        else if (moveInput.x < -0.01f)
-        {
-            spriteRenderer.flipX = true;
-            //arm.flipX = true;
-        }*/
+
     }
 }
