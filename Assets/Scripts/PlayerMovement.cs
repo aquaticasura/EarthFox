@@ -9,11 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] SpriteRenderer arm;
-    [SerializeField] GameObject armjoint;
+    [SerializeField] Transform armjoint;
     public Vector2 moveInput;
     private bool isPressingMove;
     private bool isRolling;
+    private int facingdirection = 1;
+    private bool isFlipped;
+   
+
     [Header("importante stuff")]
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
@@ -32,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        isFlipped = false;
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -64,8 +68,18 @@ public class PlayerMovement : MonoBehaviour
         }else{
             isPressingMove = false;
         }
-        //if (armjoint.transform.rotation)
-        FlipSprite();
+        Debug.Log(armjoint.rotation.z);
+        if (isFlipped == false && armjoint.rotation.z == 0.44f || isFlipped == false && armjoint.rotation.z == -0.44f)
+        {
+            FlipSprite();
+            isFlipped = true;
+        }
+        /*if (moveInput.x > 0.01f && facingdirection < 0 || moveInput.x < -0.01f && facingdirection > 0)
+        {
+            FlipSprite();
+        }*/
+
+ 
     }
     void FixedUpdate(){
         float targetSpeed = moveInput.x * maxSpeed;
@@ -127,12 +141,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipSprite()
     {
-        if (spriteRenderer == null)
-        {
-            return;
-        }
+        facingdirection *= -1;
 
-        if (moveInput.x > 0.01f)
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+
+
+        /*if (moveInput.x > 0.01f)
         {
             spriteRenderer.flipX = false;
             //arm.flipX = false;
@@ -141,6 +157,6 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = true;
             //arm.flipX = true;
-        }
+        }*/
     }
 }
