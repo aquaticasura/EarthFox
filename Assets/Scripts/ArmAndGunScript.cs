@@ -10,6 +10,7 @@ public class ArmAndGunScript : MonoBehaviour
     private bool isCooldown;
     public float shootForce = 10f;
     public float muzzleOffset = 0.3f;
+    public float bulletDamage = 10f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,6 +50,7 @@ public class ArmAndGunScript : MonoBehaviour
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.SetDamage(bulletDamage);
             Collider2D shooterCollider = GetComponentInParent<Collider2D>();
             bulletScript.IgnoreShooterCollider(shooterCollider);
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
