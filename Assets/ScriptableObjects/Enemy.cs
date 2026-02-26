@@ -8,6 +8,7 @@ public class Enemy : ScriptableObject
     public int damage = 10;
     public Sprite sprite;
     public bool isAgressive;
+    public float agroRange = 5f;
     public bool isAlive;
     public float currentHealth;
     public EnemyType enemyType;

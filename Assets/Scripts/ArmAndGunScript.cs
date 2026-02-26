@@ -10,7 +10,7 @@ public class ArmAndGunScript : MonoBehaviour
     private bool isCooldown;
     public float shootForce = 10f;
     public float muzzleOffset = 0.3f;
-    public float bulletDamage = 1000f;
+    public float bulletDamage = 10f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
