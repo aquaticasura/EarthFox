@@ -11,7 +11,8 @@ public class ArmAndGunScript : MonoBehaviour
     public float shootForce = 10f;
     public float muzzleOffset = 0.3f;
     public float bulletDamage = 10f;
-    
+    public Vector2 mousePos;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,7 +27,8 @@ public class ArmAndGunScript : MonoBehaviour
             return;
         }
 
-        Vector2 mousePos = Mouse.current.position.ReadValue();
+
+        mousePos = Mouse.current.position.ReadValue();
         worldPos = mainCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0f));
         worldPos.z = ArmTransgoon.position.z;
         

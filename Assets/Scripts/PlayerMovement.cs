@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isRolling;
     private int facingdirection = 1;
     private bool isFlipped;
-   
+    [SerializeField] ArmAndGunScript mouse;
 
     [Header("importante stuff")]
     public float moveSpeed = 5f;
@@ -68,11 +68,10 @@ public class PlayerMovement : MonoBehaviour
         }else{
             isPressingMove = false;
         }
-        Debug.Log(armjoint.rotation.z);
-        if (isFlipped == false && armjoint.rotation.z == 0.44f || isFlipped == false && armjoint.rotation.z == -0.44f)
+        Debug.Log(mouse.mousePos.x);
+        if (mouse.mousePos.x < 960 && facingdirection > 0 || mouse.mousePos.x > 960 && facingdirection < 0)
         {
             FlipSprite();
-            isFlipped = true;
         }
         /*if (moveInput.x > 0.01f && facingdirection < 0 || moveInput.x < -0.01f && facingdirection > 0)
         {
