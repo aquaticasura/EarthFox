@@ -139,21 +139,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (direction == "right")
         {
-            Debug.Log("right");
+            spriteRenderer.flipX = false;
             armsprite.flipX = false;
             armsprite.flipY = false;
         }
         else if (direction == "left")
         {
-            Debug.Log("left");
-            //armsprite.flipX = true;
-            //armsprite.flipY = true;
+            spriteRenderer.flipX = true;
+            armsprite.flipY = true;
         }
-        /*facingdirection *= -1;
 
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;*/
 
 
 
