@@ -1,14 +1,5 @@
 using UnityEngine;
-
-
 [CreateAssetMenu(fileName = "Enemy", menuName = "Scriptable Objects/Enemy")]
-public enum EnemyType
-{
-    Flying,
-    Ground,
-    Hybrid,
-    Boss
-}
 public class Enemy : ScriptableObject
 {
     public string enemyName;
@@ -20,4 +11,11 @@ public class Enemy : ScriptableObject
     public bool isAlive;
     public float currentHealth;
     public EnemyType enemyType;
+}
+public enum EnemyType
+{
+    Flying,
+    Ground,
+    Hybrid,
+    Boss
 }

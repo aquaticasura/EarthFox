@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class Bullet : MonoBehaviour
 {
+    private float damage = 10f;
     private Collider2D bulletCollider;
 
     void Awake()
@@ -28,7 +29,26 @@ public class Bullet : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        EnemyMovement enemy = collision.collider.GetComponentInParent<EnemyMovement>();
+        if (enemy == null)
+        {
+            enemy = collision.collider.GetComponent<EnemyMovement>();
+        }
+        if (enemy == null)
+        {
+            enemy = collision.collider.GetComponentInChildren<EnemyMovement>();
+        }
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
+    }
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
     }
 
     public void IgnoreShooterCollider(Collider2D shooterCollider)
