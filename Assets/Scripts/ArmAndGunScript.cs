@@ -4,9 +4,11 @@ using UnityEngine.InputSystem;
 public class ArmAndGunScript : MonoBehaviour
 {
     [SerializeField] private Transform ArmTransgoon;
+    [SerializeField] private GameObject Bullet;
     private Vector3 worldPos;
     private Camera mainCam;
     private bool isCooldown;
+    public float shootForce = 10f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,11 +40,13 @@ public class ArmAndGunScript : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         ArmTransgoon.rotation = Quaternion.Euler(0f, 0f, angle);
     }
-    void OnShoot(InputAction.CallbackContext context)
+    public void OnShoot(InputAction.CallbackContext context)
     {
         if(context.performed && !isCooldown)
         {
             isCooldown = true;
+            GameObject bullet = Instantiate(Bullet, ArmTransgoon.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * shootForce, ForceMode2D.Impulse);
             StartCoroutine(Cooldown());
         }
     }
