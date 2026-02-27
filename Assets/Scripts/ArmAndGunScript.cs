@@ -14,6 +14,7 @@ public class ArmAndGunScript : MonoBehaviour
     public float bulletDamage = 10f;
     public float recoilOffsetttoRotation;
     public Vector2 mousePos;
+    public float recoilForce = 5f;
     public bool isMouseRight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -73,7 +74,10 @@ public class ArmAndGunScript : MonoBehaviour
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.linearVelocity = ArmTransgoon.right * shootForce;
             recoilOffsetttoRotation += 10f;
+            Vector2 recoilDirection = -ArmTransgoon.right.normalized * recoilForce;
+            playermovementscript.GetRecoiled(recoilDirection);
             StartCoroutine(Cooldown());
+
         }
     }
     private IEnumerator Cooldown()

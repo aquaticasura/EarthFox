@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isPressingMove;
     private bool isRolling;
     private int facingdirection = 1;
+    private Vector2 recoilOffsett;
     [SerializeField] ArmAndGunScript mouse;
 
     [Header("importante stuff")]
@@ -86,7 +87,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float temp = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, tempAccel * Time.fixedDeltaTime);
-        rb.linearVelocity = new Vector2(temp, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(temp, rb.linearVelocity.y)+recoilOffsett;
+        recoilOffsett = Vector2.Lerp(recoilOffsett, Vector2.zero, Time.fixedDeltaTime * 10f);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -154,6 +156,9 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
+    }
+    public void GetRecoiled(Vector2 direction)
+    {
+        rb.AddForce(direction, ForceMode2D.Impulse);
     }
 }
