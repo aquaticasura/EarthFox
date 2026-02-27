@@ -99,7 +99,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Grounded() || jumpCount < maxJumpCount)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            if (rb.linearVelocity.y < 0f)
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
@@ -137,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         isRolling = false;
     }
 
-    private void FlipSprite(string direction)
+    public void FlipSprite(string direction)
     {
         if (direction == "right")
         {
