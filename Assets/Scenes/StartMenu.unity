@@ -723,9 +723,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1266287953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1aa6dede02a424592fbd593a795fd9, type: 3}
+  m_Script: {fileID: 11500000, guid: ea5e4a4f59306874bbc857f69a4bda20, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StartMenuButtons
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1295449399
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +820,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1295449402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,7 +953,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1391933066
 MonoBehaviour:
   m_ObjectHideFlags: 0

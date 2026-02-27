@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-//Script brought to you by the fucking goat
+//Script brought to you by the flipping goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] SpriteRenderer arm;
-    [SerializeField] GameObject armjoint;
+    [SerializeField] SpriteRenderer armsprite;
     public Vector2 moveInput;
     private bool isPressingMove;
     private bool isRolling;
+    private int facingdirection = 1;
+    [SerializeField] ArmAndGunScript mouse;
+
     [Header("importante stuff")]
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public const float maxSpeed = 5f;
     public float acceleration = 35f;
     public float deceleration = 25f;
+    private int jumpCount = 0;
+    public int maxJumpCount = 2;
 
 
     public LayerMask groundLayer;
@@ -52,13 +56,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Grounded())
+        {
+            jumpCount = 0;
+        }
+        
         if(moveInput.x != 0){
             isPressingMove = true;
         }else{
             isPressingMove = false;
         }
-        //if (armjoint.transform.rotation)
-        FlipSprite();
+        if (mouse.mousePos.x < 960 && facingdirection > 0)
+        {
+            FlipSprite("left");
+        }
+        else //(mouse.mousePos.x > 960 && facingdirection < 0)
+        {
+            FlipSprite("right");
+        }
+
+ 
     }
     void FixedUpdate(){
         float targetSpeed = moveInput.x * maxSpeed;
@@ -78,10 +95,15 @@ public class PlayerMovement : MonoBehaviour
         
     }
     public void OnJump(InputAction.CallbackContext context){
-        Debug.Log("Jump");
-        if(context.performed && Grounded()){
-            Debug.Log("Grounded Jump");
+        if (!context.performed) return;
+
+        if (Grounded() || jumpCount < maxJumpCount)
+        {
+            if (rb.linearVelocity.y < 0f)
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpCount++;
         }
     }
     public bool Grounded(){
@@ -116,22 +138,22 @@ public class PlayerMovement : MonoBehaviour
         isRolling = false;
     }
 
-    private void FlipSprite()
+    private void FlipSprite(string direction)
     {
-        if (spriteRenderer == null)
-        {
-            return;
-        }
-
-        if (moveInput.x > 0.01f)
+        if (direction == "right")
         {
             spriteRenderer.flipX = false;
-            //arm.flipX = false;
+            armsprite.flipX = false;
+            armsprite.flipY = false;
         }
-        else if (moveInput.x < -0.01f)
+        else if (direction == "left")
         {
             spriteRenderer.flipX = true;
-            //arm.flipX = true;
+            armsprite.flipY = true;
         }
+
+
+
+
     }
 }
