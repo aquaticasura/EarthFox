@@ -14,6 +14,33 @@ TextureImporter:
   - first:
       213: -1389528583072063486
     second: desert-tilemapwip_3
+  - first:
+      213: 1716710424425319450
+    second: desert-tilemapwip_4
+  - first:
+      213: 9038973449050171701
+    second: desert-tilemapwip_5
+  - first:
+      213: 356077067820413231
+    second: desert-tilemapwip_6
+  - first:
+      213: -2742520046145300995
+    second: desert-tilemapwip_7
+  - first:
+      213: -4113094047794025493
+    second: desert-tilemapwip_8
+  - first:
+      213: -4736786190288052903
+    second: desert-tilemapwip_9
+  - first:
+      213: 8293213070658195623
+    second: desert-tilemapwip_10
+  - first:
+      213: 7679775044667378278
+    second: desert-tilemapwip_11
+  - first:
+      213: -864658266158140162
+    second: desert-tilemapwip_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -200,7 +227,7 @@ TextureImporter:
       name: desert-tilemapwip_4
       rect:
         serializedVersion: 2
-        x: 96
+        x: 80
         y: 240
         width: 16
         height: 16
@@ -210,10 +237,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7b829fbbfdb74b849a507b26aa004b97
-      internalID: -1678608669
+      spriteID: a1cc416190bf2d710800000000000000
+      internalID: 1716710424425319450
       vertices: []
       indices: 
       edges: []
@@ -222,7 +249,7 @@ TextureImporter:
       name: desert-tilemapwip_5
       rect:
         serializedVersion: 2
-        x: 128
+        x: 112
         y: 240
         width: 16
         height: 16
@@ -232,10 +259,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5b0acf7d1b3950641bfe0b019f629898
-      internalID: 189199492
+      spriteID: 539a2dc1672e07d70800000000000000
+      internalID: 9038973449050171701
       vertices: []
       indices: 
       edges: []
@@ -244,7 +271,7 @@ TextureImporter:
       name: desert-tilemapwip_6
       rect:
         serializedVersion: 2
-        x: 144
+        x: 128
         y: 240
         width: 16
         height: 16
@@ -254,10 +281,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 83f043c0d727a2e4b8d052d3d0ee1c14
-      internalID: -1736653457
+      spriteID: f213914e43a01f400800000000000000
+      internalID: 356077067820413231
       vertices: []
       indices: 
       edges: []
@@ -266,7 +293,7 @@ TextureImporter:
       name: desert-tilemapwip_7
       rect:
         serializedVersion: 2
-        x: 176
+        x: 160
         y: 240
         width: 16
         height: 16
@@ -276,10 +303,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e57caa6c1ea349e408070982985086a0
-      internalID: 535798454
+      spriteID: df51f1c6c8c90f9d0800000000000000
+      internalID: -2742520046145300995
       vertices: []
       indices: 
       edges: []
@@ -288,8 +315,8 @@ TextureImporter:
       name: desert-tilemapwip_8
       rect:
         serializedVersion: 2
-        x: 16
-        y: 224
+        x: 192
+        y: 240
         width: 16
         height: 16
       alignment: 0
@@ -298,10 +325,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a2b7843692b18b74eae8e1f5529ff6d5
-      internalID: 542221960
+      spriteID: beba67171ca5be6c0800000000000000
+      internalID: -4113094047794025493
       vertices: []
       indices: 
       edges: []
@@ -310,6 +337,72 @@ TextureImporter:
       name: desert-tilemapwip_9
       rect:
         serializedVersion: 2
+        x: 0
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95d97e67e0e834eb0800000000000000
+      internalID: -4736786190288052903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a055333959671370800000000000000
+      internalID: 8293213070658195623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66a0f44c6ba049a60800000000000000
+      internalID: 7679775044667378278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_12
+      rect:
+        serializedVersion: 2
         x: 64
         y: 224
         width: 16
@@ -320,16 +413,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ebd83614bec324b43ae186583281aead
-      internalID: 1263554913
+      spriteID: ef4f98953ed1004f0800000000000000
+      internalID: -864658266158140162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-tilemapwip_10
+      name: desert-tilemapwip_13
       rect:
         serializedVersion: 2
         x: 80
@@ -344,17 +437,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42c67887064a68345bbb78145231d15b
-      internalID: 17995512
+      spriteID: be49578a3a2d1404d91a0df2f6bd69b1
+      internalID: -583414494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-tilemapwip_11
+      name: desert-tilemapwip_14
       rect:
         serializedVersion: 2
-        x: 96
+        x: 112
         y: 224
         width: 16
         height: 16
@@ -366,14 +459,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbb903472c8ebe74aa3b6a4144b45436
-      internalID: -210593297
+      spriteID: 152c7a4b20e4bc74ba833d379e6e3843
+      internalID: -1918395599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-tilemapwip_12
+      name: desert-tilemapwip_15
       rect:
         serializedVersion: 2
         x: 128
@@ -388,17 +481,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 282e2601b48d6dc4e91df1dc7266df94
-      internalID: 438170368
+      spriteID: f794456e3fccb0a4f9acac36d42b544c
+      internalID: 173377502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-tilemapwip_13
+      name: desert-tilemapwip_16
       rect:
         serializedVersion: 2
-        x: 144
+        x: 160
         y: 224
         width: 16
         height: 16
@@ -410,14 +503,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b6c739e4d3fce241af0586270babb68
-      internalID: 219689788
+      spriteID: e41e384b4f435b84cac17a98909ca401
+      internalID: 815230775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-tilemapwip_14
+      name: desert-tilemapwip_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db87aefdbbbcde845b70c4c431481eea
+      internalID: 727697360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_18
       rect:
         serializedVersion: 2
         x: 16
@@ -432,96 +547,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1deb9d630e33c2944a0ac03b2f1f3295
-      internalID: 1584406699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-tilemapwip_15
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 358b8eadcb09cf34cab8aacbe7e3d93e
-      internalID: -2033600327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-tilemapwip_16
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac6a22a1deed88145b2309d5bb0ce57a
-      internalID: 677370213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-tilemapwip_17
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96bfafea71a29ff478bb9ea299ed4052
-      internalID: 1004474016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-tilemapwip_18
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9974c920ba302f347a3b4a30789e8411
-      internalID: -599801606
+      spriteID: 96d4ba8307d34e844a82a78d79e224f5
+      internalID: 435573398
       vertices: []
       indices: 
       edges: []
@@ -530,7 +557,7 @@ TextureImporter:
       name: desert-tilemapwip_19
       rect:
         serializedVersion: 2
-        x: 144
+        x: 32
         y: 208
         width: 16
         height: 16
@@ -542,8 +569,360 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2808a5f870433a24c99108a5d1eb85f3
-      internalID: -1174992324
+      spriteID: 39d3ae9e244aab640a1824568128faae
+      internalID: -781814459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8914c6e86191d274088f2697ce3f0665
+      internalID: 426388658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_21
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715247c2722de3f40bc6516bc15de394
+      internalID: 1807285408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f08ec23343643a14d8fc23aab492ac56
+      internalID: 1961540101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d86912598e89994687eb030fcb21c35
+      internalID: 20297885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_24
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d21651df2870bea4d841bc6789f02bec
+      internalID: 188819010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ad212aa87ea1a5408945df5c885c402
+      internalID: -2027945203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_26
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094888f5bba0ad849822f6861b8790e7
+      internalID: 222438175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_27
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae80a8a688503e46893d732ad34746c
+      internalID: 1489205315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_28
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895bbe2eaa94c4643810042278cfab29
+      internalID: 45438802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454be499d11c0d1468a8185de564814f
+      internalID: -333346695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_30
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14a0ad44f7c0474c9f67ef93f380057
+      internalID: -950190328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_31
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a6f3b90d9dba44aa6fc131959d777c
+      internalID: 211980882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59c63eb886778948b258266e2d04f66
+      internalID: -1003486503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_33
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f254e8acbed597418d513e6ab0ce1e1
+      internalID: 1646171762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_34
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426fd51adcfd2854abc06c7567921c5c
+      internalID: 1036145029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert-tilemapwip_35
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9db84d08b906e4abbf0cf0084f3c2f
+      internalID: -1324520500
       vertices: []
       indices: 
       edges: []
@@ -552,7 +931,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2bab861b590155b47a9c24977a441aa9
+    spriteID: 5c99bf2fe29bcd645ba33a30282ab473
     internalID: 0
     vertices: []
     indices: 
@@ -561,29 +940,47 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       desert-tilemapwip_0: 5174747480079845333
       desert-tilemapwip_1: -9175116824724189004
-      desert-tilemapwip_10: 17995512
-      desert-tilemapwip_11: -210593297
-      desert-tilemapwip_12: 438170368
-      desert-tilemapwip_13: 219689788
-      desert-tilemapwip_14: 1584406699
-      desert-tilemapwip_15: -2033600327
-      desert-tilemapwip_16: 677370213
-      desert-tilemapwip_17: 1004474016
-      desert-tilemapwip_18: -599801606
-      desert-tilemapwip_19: -1174992324
+      desert-tilemapwip_10: 8293213070658195623
+      desert-tilemapwip_11: 7679775044667378278
+      desert-tilemapwip_12: -864658266158140162
+      desert-tilemapwip_13: -583414494
+      desert-tilemapwip_14: -1918395599
+      desert-tilemapwip_15: 173377502
+      desert-tilemapwip_16: 815230775
+      desert-tilemapwip_17: 727697360
+      desert-tilemapwip_18: 435573398
+      desert-tilemapwip_19: -781814459
       desert-tilemapwip_2: 256818810027795100
+      desert-tilemapwip_20: 426388658
+      desert-tilemapwip_21: 1807285408
+      desert-tilemapwip_22: 1961540101
+      desert-tilemapwip_23: 20297885
+      desert-tilemapwip_24: 188819010
+      desert-tilemapwip_25: -2027945203
+      desert-tilemapwip_26: 222438175
+      desert-tilemapwip_27: 1489205315
+      desert-tilemapwip_28: 45438802
+      desert-tilemapwip_29: -333346695
       desert-tilemapwip_3: -1389528583072063486
-      desert-tilemapwip_4: -1678608669
-      desert-tilemapwip_5: 189199492
-      desert-tilemapwip_6: -1736653457
-      desert-tilemapwip_7: 535798454
-      desert-tilemapwip_8: 542221960
-      desert-tilemapwip_9: 1263554913
+      desert-tilemapwip_30: -950190328
+      desert-tilemapwip_31: 211980882
+      desert-tilemapwip_32: -1003486503
+      desert-tilemapwip_33: 1646171762
+      desert-tilemapwip_34: 1036145029
+      desert-tilemapwip_35: -1324520500
+      desert-tilemapwip_4: 1716710424425319450
+      desert-tilemapwip_5: 9038973449050171701
+      desert-tilemapwip_6: 356077067820413231
+      desert-tilemapwip_7: -2742520046145300995
+      desert-tilemapwip_8: -4113094047794025493
+      desert-tilemapwip_9: -4736786190288052903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

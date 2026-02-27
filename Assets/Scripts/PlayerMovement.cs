@@ -101,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Grounded() || jumpCount < maxJumpCount)
         {
-            if (rb.linearVelocity.y < 0f)
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
