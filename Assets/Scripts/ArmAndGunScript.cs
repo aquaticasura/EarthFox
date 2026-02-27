@@ -15,7 +15,6 @@ public class ArmAndGunScript : MonoBehaviour
     public float recoilOffsetttoRotation;
     public Vector2 mousePos;
     public bool isMouseRight;
-    public bool isMouseLeft;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
