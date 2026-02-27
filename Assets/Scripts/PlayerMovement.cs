@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         isRolling = false;
     }
 
-    private void FlipSprite(string direction)
+    public void FlipSprite(string direction)
     {
         if (direction == "right")
         {
