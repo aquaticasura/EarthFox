@@ -551,9 +551,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
-  m_Offset: {x: -0.029753745, y: 0.11184543}
-  m_Size: {x: 0.6270535, y: 1.0052708}
-  m_Direction: 0
 --- !u!1 &230431129
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +625,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 3.83
+    OrthographicSize: 3.85
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -655,7 +652,7 @@ Transform:
   m_GameObject: {fileID: 230431129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 1.7019998, z: -5}
+  m_LocalPosition: {x: -0.06, y: 1.7099998, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -775,7 +772,6 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.2918792, g: 0.432936, b: 0.59119487, a: 0}
-  m_BackGroundColor: {r: 0.001067924, g: 0.16247125, b: 0.33962262, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -800,7 +796,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 3.83
+  orthographic size: 3.85
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -825,7 +821,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 1.7019998, z: -5}
+  m_LocalPosition: {x: -0.06, y: 1.7099998, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1056,7 +1052,10 @@ MonoBehaviour:
   shootForce: 20
   muzzleOffset: 0.9
   bulletDamage: 10
+  recoilOffsetttoRotation: 0
   mousePos: {x: 0, y: 0}
+  recoilForce: 2.5
+  isMouseRight: 0
 --- !u!1 &788862919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1144,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.06, z: 0}
-  m_LocalPosition: {x: 0.004, y: 0.069, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1238,7 +1236,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.4, y: 0, z: 0}
-  m_LocalPosition: {x: 0.448, y: -0.0448, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
