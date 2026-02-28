@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   enemyData: {fileID: 11400000, guid: a60834a0a14413b45909a691122cbd95, type: 2}
-  aggroRange: 5
+  aggroRange: 20
 --- !u!50 &4320028428467120156
 Rigidbody2D:
   serializedVersion: 5
@@ -74,7 +74,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &7035801328288426180
 GameObject:
   m_ObjectHideFlags: 0
