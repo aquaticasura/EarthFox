@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88415143}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.9965872, w: 0.08254693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.06, y: 0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -247,7 +247,7 @@ Transform:
   - {fileID: 1416084141765076313}
   - {fileID: 979660440}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -549.47}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &88415146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,9 +489,18 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckSize: {x: 1, y: 1}
-  groundCheckDistance: 0.1
+  groundCheckSize: {x: 0.49, y: 0.93}
+  groundCheckDistance: 0.04
   groundCheckGizmoColor: {r: 0, g: 1, b: 0, a: 1}
+  wallCheckSize: {x: 1, y: 1}
+  wallCheckDistance: 0.22
+  wallCheckHorizontalOffset: 0.5
+  wallCheckGizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  airControlMultiplier: 0.6
+  maxWallJumps: 1
+  wallJumpHorizontalForce: 4
+  wallJumpVerticalForce: 5
+  wallJumpControlLockDuration: 0.12
 --- !u!70 &88415151
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -502,7 +511,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 597234453c5119b4fb6b0b602150eab4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
