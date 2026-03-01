@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Diagnostics;
 //Script brought to you by the flipping goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 recoilOffsett;
     private int jumpCount = 0;
     float r;
+
     private int wallJumpsRemaining;
 
     void Awake()
@@ -104,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate(){
         Vector2 velocity = rb.linearVelocity;
-
+        UnityEngine.Debug.Log(jumpCount);
         float targetSpeed = moveInput.x * maxSpeed;
         float tempAccel = isPressingMove ? acceleration : deceleration;
         if (!Grounded())
@@ -140,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 wallJumpVelocity = new Vector2(-wallSide * wallJumpHorizontalForce, wallJumpVerticalForce);
             rb.AddForce(wallJumpVelocity, ForceMode2D.Impulse);
             wallJumpsRemaining--;
-            jumpCount--;
+            jumpCount = 0;
             fart.Play();
             return;
         }
