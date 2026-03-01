@@ -279,7 +279,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0022773743}
-  m_Radius: 0.4978218
+  m_Radius: 1.5
 --- !u!114 &7313962414331294224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   ID: 1
   Name: Creely
   quantity: 1
+  interact: 0
 --- !u!114 &2711651108690987015
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, Interactable
 {
     public int ID;
     public string Name;
@@ -11,12 +11,15 @@ public class Item : MonoBehaviour
 
     private TMP_Text quantityText;
     private GameObject NameImage;
+    private InventoryController inventoryController;
+
 
 
 
     private void Awake()
     {
         quantityText = GetComponentInChildren<TMP_Text>();
+        inventoryController = Object.FindFirstObjectByType<InventoryController>();
         UpdateQuantityDisplay();
 
     }
@@ -74,6 +77,21 @@ public class Item : MonoBehaviour
         }
     }
 
-    
+    public void Interact()
+    {
+        bool itemAdded = inventoryController.AddItem(gameObject);
 
+        if (itemAdded)
+        {
+            Debug.Log("Interact");
+            Destroy(gameObject);
+            PickUp();
+        }
+
+    }
+
+    public bool CanInteract()
+    {
+        return true;
+    }
 }

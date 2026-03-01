@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Diagnostics;
 //Script brought to you by the flipping goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -10,34 +11,57 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private SpriteRenderer spriteRenderer;
     [SerializeField] SpriteRenderer armsprite;
-    public Vector2 moveInput;
-    private bool isPressingMove;
-    private bool isRolling;
-    private int facingdirection = 1;
-    private Vector2 recoilOffsett;
     [SerializeField] ArmAndGunScript mouse;
 
-    [Header("importante stuff")]
+    [Header("Input")]
+    public Vector2 moveInput;
+
+    [Header("Movement")]
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    public float rollForce = 10f;
     public const float maxSpeed = 5f;
     public float acceleration = 35f;
     public float deceleration = 25f;
-    private int jumpCount = 0;
+    public float rollForce = 10f;
+    public float airControlMultiplier = 0.6f;
+
+    [Header("Jump")]
+    public float jumpForce = 10f;
     public int maxJumpCount = 2;
 
-
+    [Header("Ground Check")]
     public LayerMask groundLayer;
     public Vector2 groundCheckSize = new Vector2(1f, 1f);
     public float groundCheckDistance = 0.1f;
     public Color groundCheckGizmoColor = Color.green;
+
+    [Header("Wall Check")]
+    public Vector2 wallCheckSize = new Vector2(1f, 1f);
+    public float wallCheckDistance = 0.1f;
+    public float wallCheckHorizontalOffset = 0.5f;
+    public Color wallCheckGizmoColor = Color.cyan;
+
+    [Header("Wall Jump")]
+    public int maxWallJumps = 1;
+    public float wallJumpHorizontalForce = 8f;
+    public float wallJumpVerticalForce = 10f;
+
+ 
+    private ParticleSystem fart;
+    private bool isPressingMove;
+    private bool isRolling;
+    private int facingdirection = 1;
+    private Vector2 recoilOffsett;
+    private int jumpCount = 0;
+    float r;
+
+    private int wallJumpsRemaining;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        fart = GetComponentInChildren<ParticleSystem>();
     }
 
     void OnEnable()
@@ -52,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerInput.SwitchCurrentActionMap("Player");
         }
+
+        wallJumpsRemaining = maxWallJumps;
     }
 
     // Update is called once per frame
@@ -60,13 +86,13 @@ public class PlayerMovement : MonoBehaviour
         if (Grounded())
         {
             jumpCount = 0;
+            wallJumpsRemaining = maxWallJumps;
         }
-        
-        if(moveInput.x != 0){
-            isPressingMove = true;
-        }else{
-            isPressingMove = false;
-        }
+
+        isPressingMove = Mathf.Abs(moveInput.x) > 0.01f;
+        if (moveInput.x > 0.01f) facingdirection = 1;
+        if (moveInput.x < -0.01f) facingdirection = -1;
+
         if (mouse.mousePos.x < 960 && facingdirection > 0)
         {
             FlipSprite("left");
@@ -79,15 +105,17 @@ public class PlayerMovement : MonoBehaviour
  
     }
     void FixedUpdate(){
+        Vector2 velocity = rb.linearVelocity;
+        UnityEngine.Debug.Log(jumpCount);
         float targetSpeed = moveInput.x * maxSpeed;
-        float tempAccel = acceleration;
-
-        if(!isPressingMove){
-            tempAccel = deceleration;
+        float tempAccel = isPressingMove ? acceleration : deceleration;
+        if (!Grounded())
+        {
+            tempAccel *= airControlMultiplier;
         }
+        velocity.x = Mathf.MoveTowards(velocity.x, targetSpeed, tempAccel * Time.fixedDeltaTime);
 
-        float temp = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, tempAccel * Time.fixedDeltaTime);
-        rb.linearVelocity = new Vector2(temp, rb.linearVelocity.y)+recoilOffsett;
+        rb.linearVelocity = velocity + recoilOffsett;
         recoilOffsett = Vector2.Lerp(recoilOffsett, Vector2.zero, Time.fixedDeltaTime * 10f);
     }
 
@@ -98,17 +126,51 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context){
         if (!context.performed) return;
+        bool isGrounded = Grounded();
+        bool onLeftWall = WallLeft();
+        bool onRightWall = WallRight();
 
-        if (Grounded() || jumpCount < maxJumpCount)
+        if (!isGrounded && wallJumpsRemaining > 0 && (onLeftWall || onRightWall))
         {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.linearVelocity = new Vector2(0f, 0f);
+
+            int wallSide = 0; // faggot
+            if (onLeftWall && !onRightWall) wallSide = -1;
+            if (onRightWall && !onLeftWall) wallSide = 1;
+            if (wallSide == 0) wallSide = facingdirection > 0 ? 1 : -1;
+
+            Vector2 wallJumpVelocity = new Vector2(-wallSide * wallJumpHorizontalForce, wallJumpVerticalForce);
+            rb.AddForce(wallJumpVelocity, ForceMode2D.Impulse);
+            wallJumpsRemaining--;
+            jumpCount = 0;
+            fart.Play();
+            return;
+        }
+
+        if (isGrounded || jumpCount < maxJumpCount)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
+            fart.Play();
+            return;
         }
     }
     public bool Grounded(){
         return Physics2D.BoxCast(transform.position, groundCheckSize, 0f, Vector2.down, groundCheckDistance, groundLayer);
+    }
+
+    public bool WallLeft()
+    {
+        Vector2 origin = (Vector2)transform.position + Vector2.left * wallCheckHorizontalOffset;
+        return Physics2D.BoxCast(origin, wallCheckSize, 0f, Vector2.left, wallCheckDistance, groundLayer);
+    }
+
+    public bool WallRight()
+    {
+        Vector2 origin = (Vector2)transform.position + Vector2.right * wallCheckHorizontalOffset;
+        return Physics2D.BoxCast(origin, wallCheckSize, 0f, Vector2.right, wallCheckDistance, groundLayer);
     }
 
     void OnDrawGizmosSelected()
@@ -126,6 +188,24 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(startCenter + new Vector3(half.x, half.y, 0f), endCenter + new Vector3(half.x, half.y, 0f));
         Gizmos.DrawLine(startCenter + new Vector3(-half.x, -half.y, 0f), endCenter + new Vector3(-half.x, -half.y, 0f));
         Gizmos.DrawLine(startCenter + new Vector3(half.x, -half.y, 0f), endCenter + new Vector3(half.x, -half.y, 0f));
+
+        Gizmos.color = wallCheckGizmoColor;
+
+        Vector3 leftStartCenter = startCenter + Vector3.left * wallCheckHorizontalOffset;
+        Vector3 rightStartCenter = startCenter + Vector3.right * wallCheckHorizontalOffset;
+        Vector3 leftEndCenter = leftStartCenter + Vector3.left * wallCheckDistance;
+        Vector3 rightEndCenter = rightStartCenter + Vector3.right * wallCheckDistance;
+        Vector3 wallHalf = new Vector3(wallCheckSize.x * 0.5f, wallCheckSize.y * 0.5f, 0f);
+
+        Gizmos.DrawWireCube(leftStartCenter, wallCheckSize);
+        Gizmos.DrawWireCube(rightStartCenter, wallCheckSize);
+        Gizmos.DrawWireCube(leftEndCenter, wallCheckSize);
+        Gizmos.DrawWireCube(rightEndCenter, wallCheckSize);
+
+        Gizmos.DrawLine(leftStartCenter + new Vector3(-wallHalf.x, wallHalf.y, 0f), leftEndCenter + new Vector3(-wallHalf.x, wallHalf.y, 0f));
+        Gizmos.DrawLine(leftStartCenter + new Vector3(-wallHalf.x, -wallHalf.y, 0f), leftEndCenter + new Vector3(-wallHalf.x, -wallHalf.y, 0f));
+        Gizmos.DrawLine(rightStartCenter + new Vector3(wallHalf.x, wallHalf.y, 0f), rightEndCenter + new Vector3(wallHalf.x, wallHalf.y, 0f));
+        Gizmos.DrawLine(rightStartCenter + new Vector3(wallHalf.x, -wallHalf.y, 0f), rightEndCenter + new Vector3(wallHalf.x, -wallHalf.y, 0f));
     }
     public void OnRoll(InputAction.CallbackContext context){
         if(context.performed && !isRolling){
@@ -135,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Roll(){
         isRolling = true;
         rb.AddForce(Vector2.right * moveInput.x * rollForce, ForceMode2D.Impulse);
+
         yield return new WaitForSeconds(0.8f);
         isRolling = false;
     }
