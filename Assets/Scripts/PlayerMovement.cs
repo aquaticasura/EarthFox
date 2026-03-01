@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Unity.Mathematics;
 //Script brought to you by the flipping goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
     public int maxJumpCount = 2;
 
+    float r;
 
     public LayerMask groundLayer;
     public Vector2 groundCheckSize = new Vector2(1f, 1f);
@@ -135,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Roll(){
         isRolling = true;
         rb.AddForce(Vector2.right * moveInput.x * rollForce, ForceMode2D.Impulse);
+
         yield return new WaitForSeconds(0.8f);
         isRolling = false;
     }
