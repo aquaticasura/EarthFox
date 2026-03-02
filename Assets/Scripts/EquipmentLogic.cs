@@ -35,8 +35,7 @@ public class EquipmentLogic : MonoBehaviour
         braceletchanged = BraceletSlotContainer;
         amuletchanged = AmuletSlotContainer;
         RingSlotContainer = RingSlot.EquipmentID;
-        BraceletSlotContainer = BraceletSlot.EquipmentID;
-        AmuletSlotContainer = AmuletSlot.EquipmentID;
+
 
         if (RingSlotContainer != 0)
         {
