@@ -8,6 +8,13 @@ public class Item : MonoBehaviour, Interactable
     public int ID;
     public string Name;
     public int quantity = 1;
+    public string itemtype;
+
+    [Header("Stats")] // why isnt this scriptable object
+    public float SpeedBoost;
+    public float JumpBoost;
+    public int AirJumps;
+    public float RollStrength;
 
     private TMP_Text quantityText;
     private GameObject NameImage;

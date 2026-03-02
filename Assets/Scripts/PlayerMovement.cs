@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 5f;
-    public const float maxSpeed = 5f;
+    public float maxSpeed = 5f;
     public float acceleration = 35f;
     public float deceleration = 25f;
     public float rollForce = 10f;
@@ -142,8 +142,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 wallJumpVelocity = new Vector2(-wallSide * wallJumpHorizontalForce, wallJumpVerticalForce);
             rb.AddForce(wallJumpVelocity, ForceMode2D.Impulse);
             wallJumpsRemaining--;
-            jumpCount = 0;
-            fart.Play();
+            jumpCount--;
             return;
         }
 
@@ -153,7 +152,6 @@ public class PlayerMovement : MonoBehaviour
 
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
-            fart.Play();
             return;
         }
     }
