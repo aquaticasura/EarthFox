@@ -5,29 +5,26 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour, Interactable
 {
-    public int ID;
-    public string Name;
-    public int quantity = 1;
-    public string itemtype;
 
-    [Header("Stats")] // why isnt this scriptable object
-    public float SpeedBoost;
-    public float JumpBoost;
-    public int AirJumps;
-    public float RollStrength;
+
+    public Accessory accessory;
 
     private TMP_Text quantityText;
     private GameObject NameImage;
     private InventoryController inventoryController;
+    private SpriteRenderer spriterenderer;
+    private Image spriteimage;
 
 
 
 
     private void Awake()
     {
+        spriteimage = GetComponent<Image>();
         quantityText = GetComponentInChildren<TMP_Text>();
         inventoryController = Object.FindFirstObjectByType<InventoryController>();
         UpdateQuantityDisplay();
+        spriteimage.sprite = accessory.accessorysprite;
 
     }
     
@@ -35,20 +32,20 @@ public class Item : MonoBehaviour, Interactable
     {
         if (quantityText != null)
         {
-            quantityText.text = quantity > 1 ? quantity.ToString() : "";
+            quantityText.text = accessory.quantity > 1 ? accessory.quantity.ToString() : "";
         }
     }
 
     public void AddToStack(int amount = 1)
     {
-        quantity += amount;
+        accessory.quantity += amount;
         UpdateQuantityDisplay();
     }
 
     public int RemoveFromStack(int amount = 1)
     {
-        int removed = Mathf.Min(amount, quantity);
-        quantity -= removed;
+        int removed = Mathf.Min(amount, accessory.quantity);
+        accessory.quantity -= removed;
         UpdateQuantityDisplay();
         return removed;
     }
@@ -57,7 +54,7 @@ public class Item : MonoBehaviour, Interactable
     {
         GameObject clone = Instantiate(gameObject);
         Item cloneItem = clone.GetComponent<Item>();
-        cloneItem.quantity = newQuantity;
+        cloneItem.accessory.quantity = newQuantity;
         cloneItem.UpdateQuantityDisplay();
         return clone;
     }
@@ -80,7 +77,7 @@ public class Item : MonoBehaviour, Interactable
         Sprite itemIcon = GetComponent<Image>().sprite;
         if (ItemPickupUIController.Instance != null )
         {
-            ItemPickupUIController.Instance.ShowItemPickup(Name, itemIcon);
+            ItemPickupUIController.Instance.ShowItemPickup(accessory.Name, itemIcon);
         }
     }
 

@@ -20,7 +20,7 @@ MonoBehaviour:
   - thats good
   - thats bad
   autoProgressLines: 0101
-  endDialogueLines: 
+  endDialogueLines: 00000101
   AutoProgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 0}

@@ -56,9 +56,9 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 Item draggedItem = GetComponent<Item>();
                 Item targetItem = dropSlot.currentItem.GetComponent<Item>();
 
-                if(draggedItem.ID == targetItem.ID)
+                if(draggedItem.accessory.ID == targetItem.accessory.ID)
                 {
-                    targetItem.AddToStack(draggedItem.quantity);
+                    targetItem.AddToStack(draggedItem.accessory.quantity);
                     originalSlot.currentItem = null;
                     Destroy(gameObject);
                 }
@@ -108,7 +108,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         //find player
         Item item = GetComponent<Item>();
-        int quantity = item.quantity;
+        int quantity = item.accessory.quantity;
 
         if  (quantity > 1)
         {
@@ -169,9 +169,9 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private void SplitStack()
     {
         Item item = GetComponent<Item>();
-        if (item == null || item.quantity <= 1) return;
+        if (item == null || item.accessory.quantity <= 1) return;
 
-        int splitAmount = item.quantity / 2;
+        int splitAmount = item.accessory.quantity / 2;
         if (splitAmount <= 0) return;
 
         item.RemoveFromStack(splitAmount);

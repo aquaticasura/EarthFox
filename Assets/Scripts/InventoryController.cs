@@ -46,7 +46,7 @@ public class InventoryController : MonoBehaviour
             if (slot != null && slot.currentItem != null)
             {
                 Item slotItem = slot.currentItem.GetComponent<Item>();
-                if (slotItem != null && slotItem.ID == itemToAdd.ID)
+                if (slotItem != null && slotItem.accessory.ID == itemToAdd.accessory.ID)
                 {
                     slotItem.AddToStack();
                     return true;

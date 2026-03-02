@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using TMPro;
 public class ArmAndGunScript : MonoBehaviour
 {
     [SerializeField] private Transform ArmTransgoon;
@@ -12,14 +13,26 @@ public class ArmAndGunScript : MonoBehaviour
     public float shootForce = 10f;
     public float muzzleOffset = 0.3f;
     public float bulletDamage = 10f;
+    public int bullet;
+    public int bulletcap;
+    public int totalbullet;
     public float recoilOffsetttoRotation;
     public Vector2 mousePos;
     public float recoilForce = 5f;
     public bool isMouseRight;
 
+    public TMP_Text bulletText;
+    public TMP_Text totalbulletText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        bullet = 6;
+        bulletcap = 6;
+        totalbullet = 12;
+        totalbulletText.text = totalbullet.ToString();
+        bulletText.text = bullet.ToString();
+
         mainCam = Camera.main;
     }
     void Awake(){
@@ -60,11 +73,32 @@ public class ArmAndGunScript : MonoBehaviour
         
         recoilOffsetttoRotation = Mathf.Lerp(recoilOffsetttoRotation, 0f, Time.fixedDeltaTime * 10f);
     }
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if(context.performed && totalbullet > 0)
+        {
+            if (totalbullet >= 6 && bullet == 0)
+            {
+                totalbullet = totalbullet - 6;
+                bullet =+ 6;
+            }
+            else // this whole logic needs some rethinking but im too lazy to do it now
+            {
+                bullet = bullet + totalbullet;
+                totalbullet = totalbullet - totalbullet;
+            }
+            totalbulletText.text = totalbullet.ToString();
+            bulletText.text = bullet.ToString();
+
+        }
+    }
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if(context.performed && !isCooldown)
+        if(context.performed && !isCooldown && bullets > 0)
         {
             isCooldown = true;
+            bullets = bullets - 1;
+            bulletText.text = bullets.ToString();
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();

@@ -27,16 +27,16 @@ public class EquipmentSlot : MonoBehaviour
         if (slot.currentItem != null)
         {
             Item slotItem = slot.currentItem.GetComponent<Item>();
-            if (slotItem.ID != EquipmentID)
+            if (slotItem.accessory.ID != EquipmentID)
             {
-                EquipmentID = slotItem.ID;
-                Amount = slotItem.quantity;
-                EquipmentType = slotItem.itemtype;
+                EquipmentID = slotItem.accessory.ID;
+                Amount = slotItem.accessory.quantity;
+                EquipmentType = slotItem.accessory.itemtype;
 
-                SpeedBoost = slotItem.SpeedBoost;
-                JumpBoost = slotItem.JumpBoost;
-                AirJumps = slotItem.AirJumps;
-                RollStrength = slotItem.RollStrength;
+                SpeedBoost = slotItem.accessory.SpeedBoost;
+                JumpBoost = slotItem.accessory.JumpBoost;
+                AirJumps = slotItem.accessory.AirJumps;
+                RollStrength = slotItem.accessory.RollStrength;
                 Debug.Log(EquipmentID);
 
 

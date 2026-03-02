@@ -7,8 +7,8 @@ public class EquipmentLogic : MonoBehaviour
     private InventoryController inventoryController;
     private PlayerMovement playerMovement;
     private int ringchanged;
-    private int braceletchanged;
-    private int amuletchanged;
+
+
 
     private float defaultspeed;
     private int defaultjumpcount;
@@ -32,11 +32,22 @@ public class EquipmentLogic : MonoBehaviour
     void Update()
     {
         ringchanged = RingSlotContainer;
-        braceletchanged = BraceletSlotContainer;
-        amuletchanged = AmuletSlotContainer;
         RingSlotContainer = RingSlot.EquipmentID;
+        ring();
 
 
+
+    }
+    private void defaultstats()
+    {
+        playerMovement.maxSpeed = defaultspeed;
+        playerMovement.maxJumpCount = defaultjumpcount;
+        playerMovement.jumpForce = defaultjumpforce;
+        playerMovement.rollForce = defaultrollforce;
+    }
+
+    private void ring()
+    {
         if (RingSlotContainer != 0)
         {
             if (RingSlot.EquipmentType == "ring")
@@ -56,17 +67,7 @@ public class EquipmentLogic : MonoBehaviour
         {
             defaultstats();
         }
-
     }
-    private void defaultstats()
-    {
-        playerMovement.maxSpeed = defaultspeed;
-        playerMovement.maxJumpCount = defaultjumpcount;
-        playerMovement.jumpForce = defaultjumpforce;
-        playerMovement.rollForce = defaultrollforce;
-    }
-
-
 
   
 
