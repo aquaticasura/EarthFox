@@ -13,25 +13,25 @@ public class ArmAndGunScript : MonoBehaviour
     public float shootForce = 10f;
     public float muzzleOffset = 0.3f;
     public float bulletDamage = 10f;
-    public int bullet;
-    public int bulletcap;
-    public int totalbullet;
+    public int ammo;
+    public int ammocap;
+    public int totalammo;
     public float recoilOffsetttoRotation;
     public Vector2 mousePos;
     public float recoilForce = 5f;
     public bool isMouseRight;
 
-    public TMP_Text bulletText;
-    public TMP_Text totalbulletText;
+    public TMP_Text AmmoText;
+    public TMP_Text totalAmmoText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bullet = 6;
-        bulletcap = 6;
-        totalbullet = 12;
-        totalbulletText.text = totalbullet.ToString();
-        bulletText.text = bullet.ToString();
+        ammo = 6;
+        ammocap = 6;
+        totalammo = 12;
+        totalAmmoText.text = totalammo.ToString();
+        AmmoText.text = ammo.ToString();
 
         mainCam = Camera.main;
     }
@@ -75,30 +75,30 @@ public class ArmAndGunScript : MonoBehaviour
     }
     public void OnReload(InputAction.CallbackContext context)
     {
-        if(context.performed && totalbullet > 0)
+        if(context.performed && totalammo > 0)
         {
-            if (totalbullet >= 6 && bullet == 0)
+            if (totalammo >= 6 && ammo == 0)
             {
-                totalbullet = totalbullet - 6;
-                bullet =+ 6;
+                totalammo = totalammo - 6;
+                ammo =+ 6;
             }
             else // this whole logic needs some rethinking but im too lazy to do it now
             {
-                bullet = bullet + totalbullet;
-                totalbullet = totalbullet - totalbullet;
+                ammo = ammo + totalammo;
+                totalammo = totalammo - totalammo;
             }
-            totalbulletText.text = totalbullet.ToString();
-            bulletText.text = bullet.ToString();
+            totalAmmoText.text = totalammo.ToString();
+            AmmoText.text = ammo.ToString();
 
         }
     }
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if(context.performed && !isCooldown && bullets > 0)
+        if(context.performed && !isCooldown && ammo > 0)
         {
             isCooldown = true;
-            bullets = bullets - 1;
-            bulletText.text = bullets.ToString();
+            ammo = ammo - 1;
+            AmmoText.text = ammo.ToString();
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
