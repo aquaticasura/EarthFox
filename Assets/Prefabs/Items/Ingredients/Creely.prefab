@@ -231,7 +231,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 140255161
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5812483118317372028, guid: 317d55fe9e62c134e93c4d519e4606d1, type: 3}
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b16a1dbffea54240a94728b0278de8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  accessory: {fileID: 11400000, guid: 52e51d415f2b22848b2e330888991960, type: 2}
+  itemobject: {fileID: 11400000, guid: 52e51d415f2b22848b2e330888991960, type: 2}
 --- !u!114 &2711651108690987015
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -106,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate(){
         Vector2 velocity = rb.linearVelocity;
-        UnityEngine.Debug.Log(jumpCount);
         float targetSpeed = moveInput.x * maxSpeed;
         float tempAccel = isPressingMove ? acceleration : deceleration;
         if (!Grounded())
