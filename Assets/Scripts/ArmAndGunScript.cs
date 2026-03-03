@@ -98,7 +98,6 @@ public class ArmAndGunScript : MonoBehaviour
         {
             isCooldown = true;
             ammo = ammo - 1;
-            AmmoText.text = ammo.ToString();
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
@@ -111,6 +110,7 @@ public class ArmAndGunScript : MonoBehaviour
             Vector2 recoilDirection = -ArmTransgoon.right.normalized * recoilForce;
             playermovementscript.GetRecoiled(recoilDirection);
             StartCoroutine(Cooldown());
+            AmmoText.text = ammo.ToString();
 
         }
     }

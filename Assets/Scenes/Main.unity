@@ -1422,14 +1422,15 @@ MonoBehaviour:
   shootForce: 20
   muzzleOffset: 0.9
   bulletDamage: 10
-  bullets: 0
-  totalbullets: 0
+  ammo: 0
+  ammocap: 0
+  totalammo: 0
   recoilOffsetttoRotation: 0
   mousePos: {x: 0, y: 0}
   recoilForce: 2.5
   isMouseRight: 0
-  bulletText: {fileID: 2075976513}
-  totalbulletText: {fileID: 2123565588}
+  AmmoText: {fileID: 2075976513}
+  totalAmmoText: {fileID: 2123565588}
 --- !u!1 &786448370
 GameObject:
   m_ObjectHideFlags: 0
