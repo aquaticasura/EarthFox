@@ -7,8 +7,8 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     Transform originalParent;
     CanvasGroup canvasGroup;
 
-    public float minDropDinstance = 2f;
-    public float maxDropDistance = 3f;
+    public float minDropDinstance = 0f;
+    public float maxDropDistance = 0f;
 
     private InventoryController inventoryController;
     //public HotbarController hotbarcontroller;
@@ -56,9 +56,9 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 Item draggedItem = GetComponent<Item>();
                 Item targetItem = dropSlot.currentItem.GetComponent<Item>();
 
-                if(draggedItem.accessory.ID == targetItem.accessory.ID)
+                if(draggedItem.itemobject.ID == targetItem.itemobject.ID)
                 {
-                    targetItem.AddToStack(draggedItem.accessory.quantity);
+                    targetItem.AddToStack(draggedItem.itemobject.quantity);
                     originalSlot.currentItem = null;
                     Destroy(gameObject);
                 }
@@ -108,7 +108,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         //find player
         Item item = GetComponent<Item>();
-        int quantity = item.accessory.quantity;
+        int quantity = item.itemobject.quantity;
 
         if  (quantity > 1)
         {
@@ -169,9 +169,9 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private void SplitStack()
     {
         Item item = GetComponent<Item>();
-        if (item == null || item.accessory.quantity <= 1) return;
+        if (item == null || item.itemobject.quantity <= 1) return;
 
-        int splitAmount = item.accessory.quantity / 2;
+        int splitAmount = item.itemobject.quantity / 2;
         if (splitAmount <= 0) return;
 
         item.RemoveFromStack(splitAmount);

@@ -305,10 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b16a1dbffea54240a94728b0278de8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  ID: 1
-  Name: Creely
-  quantity: 1
-  interact: 0
+  accessory: {fileID: 11400000, guid: 52e51d415f2b22848b2e330888991960, type: 2}
 --- !u!114 &2711651108690987015
 MonoBehaviour:
   m_ObjectHideFlags: 0

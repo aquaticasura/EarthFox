@@ -77,16 +77,21 @@ public class ArmAndGunScript : MonoBehaviour
     {
         if(context.performed && totalammo > 0)
         {
-            if (totalammo >= 6 && ammo == 0)
+            if (totalammo >= ammocap)
             {
-                totalammo = totalammo - 6;
-                ammo =+ 6;
+                totalammo = totalammo + ammo;
+                ammo = ammocap;
+                totalammo = totalammo - ammocap;
             }
-            else // this whole logic needs some rethinking but im too lazy to do it now
+            else if (totalammo < ammocap)
             {
-                ammo = ammo + totalammo;
-                totalammo = totalammo - totalammo;
+    
+                ammo = totalammo;
+                totalammo = totalammo - ammo;
             }
+
+             
+
             totalAmmoText.text = totalammo.ToString();
             AmmoText.text = ammo.ToString();
 

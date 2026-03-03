@@ -39,20 +39,21 @@ public class InventoryController : MonoBehaviour
     {
         Item itemToAdd = itemPrefab.GetComponent<Item>();
         if (itemToAdd == null) return false;
-
-        foreach (Transform slotTransform in inventoryPanel.transform)
-        {
-            Slot slot = slotTransform.GetComponent<Slot>();
-            if (slot != null && slot.currentItem != null)
+            foreach (Transform slotTransform in inventoryPanel.transform)
             {
-                Item slotItem = slot.currentItem.GetComponent<Item>();
-                if (slotItem != null && slotItem.accessory.ID == itemToAdd.accessory.ID)
+                Slot slot = slotTransform.GetComponent<Slot>();
+                if (slot != null && slot.currentItem != null)
                 {
-                    slotItem.AddToStack();
-                    return true;
+                    Item slotItem = slot.currentItem.GetComponent<Item>();
+                    if (slotItem != null && slotItem.itemobject.ID == itemToAdd.itemobject.ID)
+                    {
+                        slotItem.AddToStack();
+                        return true;
+                    }
                 }
             }
-        }
+
+
 
 
 

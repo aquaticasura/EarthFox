@@ -7,12 +7,11 @@ public class Item : MonoBehaviour, Interactable
 {
 
 
-    public Accessory accessory;
+    public ItemObject itemobject;
 
     private TMP_Text quantityText;
     private GameObject NameImage;
     private InventoryController inventoryController;
-    private SpriteRenderer spriterenderer;
     private Image spriteimage;
 
 
@@ -24,7 +23,7 @@ public class Item : MonoBehaviour, Interactable
         quantityText = GetComponentInChildren<TMP_Text>();
         inventoryController = Object.FindFirstObjectByType<InventoryController>();
         UpdateQuantityDisplay();
-        spriteimage.sprite = accessory.accessorysprite;
+        spriteimage.sprite = itemobject.itemsprite;
 
     }
     
@@ -32,20 +31,20 @@ public class Item : MonoBehaviour, Interactable
     {
         if (quantityText != null)
         {
-            quantityText.text = accessory.quantity > 1 ? accessory.quantity.ToString() : "";
+            quantityText.text = itemobject.quantity > 1 ? itemobject.quantity.ToString() : "";
         }
     }
 
     public void AddToStack(int amount = 1)
     {
-        accessory.quantity += amount;
+        itemobject.quantity += amount;
         UpdateQuantityDisplay();
     }
 
     public int RemoveFromStack(int amount = 1)
     {
-        int removed = Mathf.Min(amount, accessory.quantity);
-        accessory.quantity -= removed;
+        int removed = Mathf.Min(amount, itemobject.quantity);
+        itemobject.quantity -= removed;
         UpdateQuantityDisplay();
         return removed;
     }
@@ -54,7 +53,7 @@ public class Item : MonoBehaviour, Interactable
     {
         GameObject clone = Instantiate(gameObject);
         Item cloneItem = clone.GetComponent<Item>();
-        cloneItem.accessory.quantity = newQuantity;
+        cloneItem.itemobject.quantity = newQuantity;
         cloneItem.UpdateQuantityDisplay();
         return clone;
     }
@@ -77,12 +76,13 @@ public class Item : MonoBehaviour, Interactable
         Sprite itemIcon = GetComponent<Image>().sprite;
         if (ItemPickupUIController.Instance != null )
         {
-            ItemPickupUIController.Instance.ShowItemPickup(accessory.Name, itemIcon);
+            ItemPickupUIController.Instance.ShowItemPickup(itemobject.Name, itemIcon);
         }
     }
 
     public void Interact()
     {
+
         bool itemAdded = inventoryController.AddItem(gameObject);
 
         if (itemAdded)

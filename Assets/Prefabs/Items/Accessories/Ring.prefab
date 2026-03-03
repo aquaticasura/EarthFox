@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b16a1dbffea54240a94728b0278de8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  accessory: {fileID: 11400000, guid: ae9e433ea01d58849aca7dd0b8376f74, type: 2}
+  itemobject: {fileID: 11400000, guid: ae9e433ea01d58849aca7dd0b8376f74, type: 2}
 --- !u!114 &3641142143821395725
 MonoBehaviour:
   m_ObjectHideFlags: 0

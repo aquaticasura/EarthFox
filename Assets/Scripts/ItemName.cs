@@ -9,7 +9,7 @@ public class ItemName : MonoBehaviour
     private void Awake()
     {
         itemname = GetComponentInChildren<TMP_Text>();
-        itemname.text = item.accessory.Name;
+        itemname.text = item.itemobject.Name;
     }
     void Start()
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Accessory", menuName = "Scriptable Objects/Accessory")]
-public class Accessory : ScriptableObject
+[CreateAssetMenu(fileName = "Item", menuName = "Scriptable Objects/Items")]
+public class ItemObject : ScriptableObject
 {
     public int ID;
     public string Name;
@@ -11,5 +11,5 @@ public class Accessory : ScriptableObject
     public float JumpBoost;
     public int AirJumps;
     public float RollStrength;
-    public Sprite accessorysprite;
+    public Sprite itemsprite;
 }
