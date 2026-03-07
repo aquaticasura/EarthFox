@@ -6,6 +6,10 @@ using System.Diagnostics;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Character Stats")]
+    public float stamina = 50f;
+    public float maxhealth = 100f;
+    public float health;
 
     private Rigidbody2D rb;
     private PlayerInput playerInput;

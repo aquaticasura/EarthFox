@@ -20,4 +20,4 @@ MonoBehaviour:
   JumpBoost: 1
   AirJumps: 1
   RollStrength: 0
-  accessorysprite: {fileID: -4676093299339909737, guid: cfe9988b2327dc74c91c10033529a645, type: 3}
+  itemsprite: {fileID: -4676093299339909737, guid: cfe9988b2327dc74c91c10033529a645, type: 3}
