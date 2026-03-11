@@ -28,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemyData.isAgressive)
         {
             aggroRange = aggroRange + 10f;
+            // make them move randomly left and right and maybe follow player if it leaves
         }
 
         if (!enemyData.isAgressive)
@@ -36,8 +37,8 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        float dir = Mathf.Sign(playerMovement.transform.position.x - transform.position.x);
-        rb.linearVelocity = new Vector2(dir * enemyData.moveSpeed, rb.linearVelocity.y);
+        //float dir = Mathf.Sign(playerMovement.transform.position.x - transform.position.x);
+        //rb.linearVelocity = new Vector2(dir * enemyData.moveSpeed, rb.linearVelocity.y);
     }
     public void TakeDamage(float amount)
     {

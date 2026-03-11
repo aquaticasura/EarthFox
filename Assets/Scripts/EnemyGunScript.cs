@@ -32,7 +32,7 @@ public class EnemyGunScript : MonoBehaviour
     void Start()
     {
 
-        enemymovement = GetComponent<EnemyMovement>();
+        
 
    
     }
