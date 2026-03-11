@@ -221,6 +221,10 @@ public class PlayerMovement : MonoBehaviour
         isRolling = false;
     }
 
+    public void GetRecoiled(Vector2 direction)
+    {
+        rb.AddForce(direction, ForceMode2D.Impulse);
+    }
     public void FlipSprite(string direction)
     {
         if (direction == "right")
@@ -237,9 +241,5 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    }
-    public void GetRecoiled(Vector2 direction)
-    {
-        rb.AddForce(direction, ForceMode2D.Impulse);
     }
 }

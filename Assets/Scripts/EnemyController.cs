@@ -25,6 +25,11 @@ public class EnemyMovement : MonoBehaviour
         float distanceToPlayer = Vector2.Distance(transform.position, playerMovement.transform.position);
         enemyData.isAgressive = distanceToPlayer <= aggroRange;
 
+        if (enemyData.isAgressive)
+        {
+            aggroRange = aggroRange + 10f;
+        }
+
         if (!enemyData.isAgressive)
         {
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
@@ -46,6 +51,10 @@ public class EnemyMovement : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+    public void GetRecoiled(Vector2 direction)
+    {
+        rb.AddForce(direction, ForceMode2D.Impulse);
     }
 
 }

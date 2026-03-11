@@ -1,7 +1,8 @@
-using UnityEngine;
 using System.Collections;
-using UnityEngine.InputSystem;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
 public class EnemyGunScript : MonoBehaviour
 {
     [SerializeField] private Transform ArmTransgoon;
@@ -9,8 +10,12 @@ public class EnemyGunScript : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Enemy enemyData;
 
+    [SerializeField] private Collider2D shooterCollider;
+
     public SpriteRenderer enemysprite;
     public SpriteRenderer arm;
+
+    [SerializeField] private EnemyMovement enemymovement;
 
 
     private bool isCooldown;
@@ -27,7 +32,7 @@ public class EnemyGunScript : MonoBehaviour
     void Start()
     {
 
-
+        enemymovement = GetComponent<EnemyMovement>();
 
    
     }
@@ -46,8 +51,16 @@ public class EnemyGunScript : MonoBehaviour
         isAimingRight = playerPos.x >= ArmTransgoon.position.x;
 
         FlipEnemy(isAimingRight ? "right" : "left");
-        
 
+        if (enemyData.isAgressive)
+        {
+            if (!isCooldown)
+            {
+                isCooldown = true;
+                OnShoot();
+                StartCoroutine(Cooldown());
+            }// ts dont work
+        }
     }
     void FixedUpdate()
     {
@@ -67,35 +80,23 @@ public class EnemyGunScript : MonoBehaviour
             ArmTransgoon.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
-        if (enemyData.isAgressive)
-        {
-            if (!isCooldown)
-            {
-                OnShoot();
-            }// ts dont work
-        }
+
 
         
     }
 
     public void OnShoot()
     {
-        if (!isCooldown)
-        {
 
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.SetDamage(0);
-            Collider2D shooterCollider = GetComponentInParent<Collider2D>();
-            //bulletScript.IgnoreShooterCollider(shooterCollider);
+            bulletScript.IgnoreShooterCollider(shooterCollider);
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.linearVelocity = ArmTransgoon.right * shootForce;
-            StartCoroutine(Cooldown());
 
 
-
-        }
     }
     private IEnumerator Cooldown()
     {
