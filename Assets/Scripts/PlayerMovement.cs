@@ -116,6 +116,10 @@ public class PlayerMovement : MonoBehaviour
         {
             tempAccel *= airControlMultiplier;
         }
+        if(Grounded() && moveInput.x != 0)
+        {
+            MasterSoundFXScript.Instance.PlayFX(3);
+        }
         velocity.x = Mathf.MoveTowards(velocity.x, targetSpeed, tempAccel * Time.fixedDeltaTime);
 
         rb.linearVelocity = velocity + recoilOffsett;
@@ -216,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Roll(){
         isRolling = true;
         rb.AddForce(Vector2.right * moveInput.x * rollForce, ForceMode2D.Impulse);
-
+        MasterSoundFXScript.Instance.PlayFX(2);
         yield return new WaitForSeconds(0.8f);
         isRolling = false;
     }
