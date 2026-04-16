@@ -15,19 +15,18 @@ MonoBehaviour:
   npcName: Jamie
   npcPortrait: {fileID: -3972179749553808558, guid: 431e3c7241f052d4f97248d7dd7a728a, type: 3}
   dialogueLines:
-  - hello
-  - how are you
-  - thats good
-  - thats bad
+  - Hey is there a chance you could help get rid of those bandits?
+  - Great, you'll find them if you go right from here
+  - Maybe next time...
   autoProgressLines: 0101
-  endDialogueLines: 00000101
+  endDialogueLines: 000101
   AutoProgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 0}
   voicePitch: 1
   choices:
-  - dialogueIndex: 1
+  - dialogueIndex: 0
     choices:
-    - good
-    - bad
-    nextDialogueIndexes: 0200000003000000
+    - Yes
+    - No
+    nextDialogueIndexes: 0100000002000000
