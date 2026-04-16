@@ -91,7 +91,6 @@ public class EnemyGunScript : MonoBehaviour
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
-            bulletScript.SetDamage(0);
             bulletScript.IgnoreShooterCollider(shooterCollider);
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.linearVelocity = ArmTransgoon.right * shootForce;
