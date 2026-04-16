@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+//NOT USED
 public class SoundEffectManager : MonoBehaviour
 {
     private static SoundEffectManager instance;

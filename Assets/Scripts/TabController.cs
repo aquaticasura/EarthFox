@@ -15,6 +15,7 @@ public class TabController : MonoBehaviour
         ActivateTab(0);
     }
 
+    //Activates tab based on the tab number (called on the tab cards in ui)
     public void ActivateTab(int tabNo)
     {
         for (int i = 0; i < pages.Length; i++)

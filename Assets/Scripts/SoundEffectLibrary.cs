@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+//NOT USED
 public class SoundEffectLibrary : MonoBehaviour
 {
     [SerializeField] private SoundEffectGroup[] soundEffectGroups;

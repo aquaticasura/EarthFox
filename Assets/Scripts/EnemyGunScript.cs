@@ -59,7 +59,7 @@ public class EnemyGunScript : MonoBehaviour
                 isCooldown = true;
                 OnShoot();
                 StartCoroutine(Cooldown());
-            }// ts dont work
+            }
         }
     }
     void FixedUpdate()
