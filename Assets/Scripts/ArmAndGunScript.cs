@@ -103,6 +103,7 @@ public class ArmAndGunScript : MonoBehaviour
         {
             isCooldown = true;
             ammo = ammo - 1;
+            MasterSoundFXScript.Instance.PlayFX(1);
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
