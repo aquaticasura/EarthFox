@@ -23,7 +23,7 @@ public class EnemyGunScript : MonoBehaviour
     public float muzzleOffset = 0.3f;
     public float bulletDamage = 10f;
 
-
+    public bool isAgressive;
     public Vector3 playerPos;
     public bool isAimingRight;
 
@@ -52,14 +52,14 @@ public class EnemyGunScript : MonoBehaviour
 
         FlipEnemy(isAimingRight ? "right" : "left");
 
-        if (enemyData.isAgressive)
+        if (isAgressive)
         {
             if (!isCooldown)
             {
                 isCooldown = true;
                 OnShoot();
                 StartCoroutine(Cooldown());
-            }// ts dont work
+            }
         }
     }
     void FixedUpdate()
@@ -91,7 +91,7 @@ public class EnemyGunScript : MonoBehaviour
             Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
             GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
-            bulletScript.SetDamage(0);
+            bulletScript.SetShooter(global::Bullet.ShooterType.Enemy);
             bulletScript.IgnoreShooterCollider(shooterCollider);
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.linearVelocity = ArmTransgoon.right * shootForce;

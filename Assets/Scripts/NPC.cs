@@ -60,7 +60,7 @@ public class NPC : MonoBehaviour, Interactable
     {
         if (isTyping)
         {
-            //skip skriveanimasjon til full linje tekst
+            //skip the animation
             StopAllCoroutines();
             dialogueUI.SetDialogueText(dialogueData.dialogueLines[dialogueIndex]);
             isTyping = false;
@@ -85,12 +85,11 @@ public class NPC : MonoBehaviour, Interactable
 
         if (++dialogueIndex < dialogueData.dialogueLines.Length)
         {
-            //hvis ny linje, start på neste linje
+            //if new line start on a new line
             DisplayCurrentLine();
         }
         else
         {
-            //slutt dialogen
             EndDialogue();
         }
     }
@@ -140,9 +139,6 @@ public class NPC : MonoBehaviour, Interactable
         dialogueUI.SetDialogueText("");
         dialogueUI.ShowDialogueUI(false);
         PauseController.SetPause(false);
-        if (combat)
-        {
-            //null
-        }
+
     }
 }

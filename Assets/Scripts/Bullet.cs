@@ -4,6 +4,17 @@ public class Bullet : MonoBehaviour
 {
     private float damage = 10f;
     private Collider2D bulletCollider;
+    public enum ShooterType
+{
+    Player,
+    Enemy
+}
+
+private ShooterType shooter;
+    public void SetShooter(ShooterType type)
+{
+    shooter = type;
+}
 
     void Awake()
     {
@@ -28,23 +39,38 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D collision)
-    {
-        EnemyMovement enemy = collision.collider.GetComponentInParent<EnemyMovement>();
-        if (enemy == null)
-        {
-            enemy = collision.collider.GetComponent<EnemyMovement>();
-        }
-        if (enemy == null)
-        {
-            enemy = collision.collider.GetComponentInChildren<EnemyMovement>();
-        }
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage);
-        }
+{
+    EnemyMovement enemy = collision.collider.GetComponentInParent<EnemyMovement>();
+    PlayerMovement player = collision.collider.GetComponentInParent<PlayerMovement>();
 
+    if (enemy == null)
+        enemy = collision.collider.GetComponent<EnemyMovement>();
+
+    if (enemy == null)
+        enemy = collision.collider.GetComponentInChildren<EnemyMovement>();
+
+    if (player == null)
+        player = collision.collider.GetComponent<PlayerMovement>();
+
+    if (player == null)
+        player = collision.collider.GetComponentInChildren<PlayerMovement>();
+
+
+    if (shooter == ShooterType.Player && enemy != null)
+    {
+        enemy.TakeDamage(damage);
         Destroy(gameObject);
+        return;
     }
+
+    if (shooter == ShooterType.Enemy && player != null)
+    {
+        player.TakeDamage(damage);
+        Destroy(gameObject);
+        return;
+    }
+    Destroy(gameObject);
+}
 
     public void SetDamage(float newDamage)
     {

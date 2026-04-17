@@ -3,15 +3,19 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    [SerializeField] private Enemy enemyData;
+    private float currentHealth;
+    public Enemy enemyData;
+    private EnemyGunScript enemyGunScript;
+    private bool isAgressive;
     [SerializeField] private float aggroRange = 5f;
     private Rigidbody2D rb;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerMovement = FindFirstObjectByType<PlayerMovement>();
-        enemyData.currentHealth = enemyData.maxHealth;
-        enemyData.isAgressive = false;
+        currentHealth = enemyData.maxHealth;
+        enemyGunScript = GetComponentInChildren<EnemyGunScript>();
+        isAgressive = false;
     }
 
     // Update is called once per frame
@@ -23,15 +27,11 @@ public class EnemyMovement : MonoBehaviour
         }
 
         float distanceToPlayer = Vector2.Distance(transform.position, playerMovement.transform.position);
-        enemyData.isAgressive = distanceToPlayer <= aggroRange;
+        isAgressive = distanceToPlayer <= aggroRange;
 
-        if (enemyData.isAgressive)
-        {
-            aggroRange = aggroRange + 10f;
-            // make them move randomly left and right and maybe follow player if it leaves
-        }
+        enemyGunScript.isAgressive = isAgressive;
 
-        if (!enemyData.isAgressive)
+        if (!isAgressive)
         {
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             return;
@@ -42,8 +42,8 @@ public class EnemyMovement : MonoBehaviour
     }
     public void TakeDamage(float amount)
     {
-        enemyData.currentHealth -= amount;
-        if (enemyData.currentHealth <= 0f)
+        currentHealth -= amount;
+        if (currentHealth <= 0f)
         {
             Die();
         }

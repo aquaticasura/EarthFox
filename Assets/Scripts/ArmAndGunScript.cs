@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 public class ArmAndGunScript : MonoBehaviour
 {
-    [SerializeField] private Transform ArmTransgoon;
+    [SerializeField] private Transform armTransform;
     [SerializeField] private GameObject Bullet;
     private PlayerMovement playermovementscript;
     private Vector3 worldPos;
@@ -23,17 +23,19 @@ public class ArmAndGunScript : MonoBehaviour
 
     public TMP_Text AmmoText;
     public TMP_Text totalAmmoText;
+    public GameObject reloadtext;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ammo = 6;
         ammocap = 6;
-        totalammo = 12;
+        totalammo = 99;
         totalAmmoText.text = totalammo.ToString();
         AmmoText.text = ammo.ToString();
 
         mainCam = Camera.main;
+        reloadtext.SetActive(false);
     }
     void Awake(){
         playermovementscript = FindFirstObjectByType<PlayerMovement>();
@@ -42,7 +44,15 @@ public class ArmAndGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mainCam == null || ArmTransgoon == null)
+        if (ammo == 0)
+        {
+            reloadtext.SetActive(true);
+        }
+        else
+        {
+            reloadtext.SetActive(false);
+        }
+        if (mainCam == null || armTransform == null)
         {
             return;
         }
@@ -50,25 +60,25 @@ public class ArmAndGunScript : MonoBehaviour
 
         mousePos = Mouse.current.position.ReadValue();
         worldPos = mainCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0f));
-        worldPos.z = ArmTransgoon.position.z;
-        isMouseRight = worldPos.x >= ArmTransgoon.position.x;
+        worldPos.z = armTransform.position.z;
+        isMouseRight = worldPos.x >= armTransform.position.x;
 
         playermovementscript.FlipSprite(isMouseRight ? "right" : "left");
         
     }
     void FixedUpdate()
     {
-        if (ArmTransgoon == null)
+        if (armTransform == null)
         {
             return;
         }
-
-        Vector3 dir = worldPos - ArmTransgoon.position;
+        //matte greier
+        Vector3 dir = worldPos - armTransform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         if(isMouseRight){
-            ArmTransgoon.rotation = Quaternion.Euler(0f, 0f, angle+recoilOffsetttoRotation);
+            armTransform.rotation = Quaternion.Euler(0f, 0f, angle+recoilOffsetttoRotation);
         }else{
-            ArmTransgoon.rotation = Quaternion.Euler(0f, 0f, angle-recoilOffsetttoRotation);
+            armTransform.rotation = Quaternion.Euler(0f, 0f, angle-recoilOffsetttoRotation);
         }
         
         recoilOffsetttoRotation = Mathf.Lerp(recoilOffsetttoRotation, 0f, Time.fixedDeltaTime * 10f);
@@ -103,16 +113,18 @@ public class ArmAndGunScript : MonoBehaviour
         {
             isCooldown = true;
             ammo = ammo - 1;
-            Vector3 spawnPos = ArmTransgoon.position + ArmTransgoon.right * muzzleOffset;
-            GameObject bullet = Instantiate(Bullet, spawnPos, ArmTransgoon.rotation);
+            MasterSoundFXScript.Instance.PlayFX(1);
+            Vector3 spawnPos = armTransform.position + armTransform.right * muzzleOffset;
+            GameObject bullet = Instantiate(Bullet, spawnPos, armTransform.rotation);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.SetShooter(global::Bullet.ShooterType.Player);
             bulletScript.SetDamage(bulletDamage);
             Collider2D shooterCollider = GetComponentInParent<Collider2D>();
             bulletScript.IgnoreShooterCollider(shooterCollider);
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            bulletRb.linearVelocity = ArmTransgoon.right * shootForce;
+            bulletRb.linearVelocity = armTransform.right * shootForce;
             recoilOffsetttoRotation += 10f;
-            Vector2 recoilDirection = -ArmTransgoon.right.normalized * recoilForce;
+            Vector2 recoilDirection = -armTransform.right.normalized * recoilForce;
             playermovementscript.GetRecoiled(recoilDirection);
             StartCoroutine(Cooldown());
             AmmoText.text = ammo.ToString();

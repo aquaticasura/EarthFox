@@ -106,7 +106,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     void DropItem(Slot originalSlot)
     {
-        //find player
         Item item = GetComponent<Item>();
         int quantity = item.itemobject.quantity;
 
@@ -168,6 +167,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void SplitStack()
     {
+        //right clicking a stack will split it into 2 stacks
         Item item = GetComponent<Item>();
         if (item == null || item.itemobject.quantity <= 1) return;
 

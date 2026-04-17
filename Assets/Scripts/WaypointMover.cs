@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+//NOT USED
 public class WaypointMover : MonoBehaviour
 {
     public Transform waypointParent;
