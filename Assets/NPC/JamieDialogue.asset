@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JamieDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Jamie
-  npcPortrait: {fileID: -3972179749553808558, guid: 431e3c7241f052d4f97248d7dd7a728a, type: 3}
+  npcPortrait: {fileID: -4745544815557834353, guid: 741838dbb92b18b408fc0d687f0b36d2, type: 3}
   dialogueLines:
   - Hey is there a chance you could help get rid of those bandits?
   - Great, you'll find them if you go right from here

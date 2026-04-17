@@ -19,5 +19,5 @@ MonoBehaviour:
   SpeedBoost: 0
   JumpBoost: 0
   AirJumps: 0
-  RollStrength: 10
+  RollStrength: 50
   itemsprite: {fileID: -4676093299339909737, guid: cfe9988b2327dc74c91c10033529a645, type: 3}

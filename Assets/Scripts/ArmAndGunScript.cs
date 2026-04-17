@@ -23,17 +23,19 @@ public class ArmAndGunScript : MonoBehaviour
 
     public TMP_Text AmmoText;
     public TMP_Text totalAmmoText;
+    public GameObject reloadtext;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ammo = 6;
         ammocap = 6;
-        totalammo = 12;
+        totalammo = 99;
         totalAmmoText.text = totalammo.ToString();
         AmmoText.text = ammo.ToString();
 
         mainCam = Camera.main;
+        reloadtext.SetActive(false);
     }
     void Awake(){
         playermovementscript = FindFirstObjectByType<PlayerMovement>();
@@ -42,6 +44,14 @@ public class ArmAndGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ammo == 0)
+        {
+            reloadtext.SetActive(true);
+        }
+        else
+        {
+            reloadtext.SetActive(false);
+        }
         if (mainCam == null || armTransform == null)
         {
             return;
