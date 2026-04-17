@@ -69,6 +69,7 @@ private ShooterType shooter;
         Destroy(gameObject);
         return;
     }
+    Destroy(gameObject);
 }
 
     public void SetDamage(float newDamage)
