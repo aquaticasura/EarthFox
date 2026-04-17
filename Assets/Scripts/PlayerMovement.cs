@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
+using Unity.AppUI.UI;
+using UnityEngine.UI;
 //Script brought to you by the flipping goat
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -14,8 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] SpriteRenderer armsprite;
-    [SerializeField] ArmAndGunScript mouse;
+    
+    [SerializeField] SpriteRenderer armsprite; //her får jeg spriten til armen
+    [SerializeField] ArmAndGunScript mouse; 
 
     [Header("Input")]
     public Vector2 moveInput;
@@ -50,13 +54,14 @@ public class PlayerMovement : MonoBehaviour
     public float wallJumpVerticalForce = 10f;
 
  
-    private ParticleSystem fart;
+
     private bool isPressingMove;
     private bool isRolling;
     private int facingdirection = 1;
     private Vector2 recoilOffsett;
     private int jumpCount = 0;
     float r;
+    public Slider healthSlider;
 
     private int wallJumpsRemaining;
 
@@ -65,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        fart = GetComponentInChildren<ParticleSystem>();
+        
     }
 
     void OnEnable()
@@ -85,6 +90,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        healthSlider.value = health;
+        if(health<= 0)
+        {
+            SceneManager.LoadScene("StartMenu",LoadSceneMode.Single);
+        }
+    }
     void Update()
     {
         if (Grounded())
@@ -101,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         {
             FlipSprite("left");
         }
-        else //(mouse.mousePos.x > 960 && facingdirection < 0)
+        else 
         {
             FlipSprite("right");
         }
@@ -141,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(0f, 0f);
 
-            int wallSide = 0; // faggot
+            int wallSide = 0;
             if (onLeftWall && !onRightWall) wallSide = -1;
             if (onRightWall && !onLeftWall) wallSide = 1;
             if (wallSide == 0) wallSide = facingdirection > 0 ? 1 : -1;
@@ -178,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(origin, wallCheckSize, 0f, Vector2.right, wallCheckDistance, groundLayer);
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()//all koden her er bare for debug og ikke viktig
     {
         Gizmos.color = groundCheckGizmoColor;
 
